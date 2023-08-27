@@ -1,7 +1,15 @@
 #url = "https://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100"
 url = "bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100"
+# url = "\t    \n"
 
 print(url)
+
+# Sanitize url
+# Strip removes blank space and special characters like tab for instance.
+url = url.strip()
+
+if url == "":
+    raise ValueError("URL is empty")
 
 # Find returns character index
 question_mark_index = url.find('?')
