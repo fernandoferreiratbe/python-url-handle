@@ -1,0 +1,10 @@
+#PyCharm config directory
+.idea
+
+# VsCode config directory
+.vscode
+
+# Python temp files
+__python__
+pycache
+
