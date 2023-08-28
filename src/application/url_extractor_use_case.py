@@ -24,7 +24,7 @@ class URLExtractorUseCase:
     def get_base_url(self) -> str:
         question_mark_index = self.url.find('?')
 
-        return self.url[:question_mark_index]
+        return self.url[:question_mark_index + 1]
 
     def get_url_parameters(self) -> str:
         question_mark_index = self.url.find('?')
@@ -55,3 +55,12 @@ class URLExtractorUseCase:
         #     value_found = self.url[parameter_name_index + len(parameter_name) + 1:concatenation_parameter_index]
         #
         # return value_found
+
+    def __len__(self):
+        return len(self.url)
+
+    def __str__(self):
+        return f"URL base: {self.get_base_url()}\n URL parameters: {self.get_url_parameters()}\n"
+
+    def __eq__(self, other):
+        return self.url == other.url
