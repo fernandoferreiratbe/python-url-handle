@@ -1,3 +1,5 @@
+import re
+
 
 class URLExtractorUseCase:
 
@@ -13,6 +15,11 @@ class URLExtractorUseCase:
     def validate_url(self) -> None:
         if self.url == "":
             raise ValueError("URL is empty")
+
+        url_pattern = re.compile('(http(s)?://)?(www.)?bytebank.com(.br)?/cambio')
+        match = url_pattern.match(self.url)
+        if not match:
+            raise ValueError(f"URL {self.url} is invalid!")
 
     def get_base_url(self) -> str:
         question_mark_index = self.url.find('?')
